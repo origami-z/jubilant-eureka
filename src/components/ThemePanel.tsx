@@ -60,6 +60,10 @@ export const ThemePanel = ({
     }
   }, [customTheme]);
 
+  useEffect(() => {
+    console.log({ customTheme });
+  }, [customTheme]);
+
   return (
     <Panel className="theme-panel" ref={rootRef}>
       <ThemeEditor

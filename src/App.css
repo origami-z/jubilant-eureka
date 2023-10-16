@@ -36,8 +36,11 @@ strong {
   height: 100%;
 }
 
-.template-picker-toolbar {
+.template-picker-toolbar.saltFlexLayout {
   flex: 0 0 auto;
+  background: var(--salt-container-secondary-background);
+  height: calc(var(--salt-size-base) + var(--salt-size-unit) * 2);
+  padding-inline: var(--salt-spacing-100);
 }
 
 .saltButton.saltButton-secondary.saltColorChooser-overlayButton {

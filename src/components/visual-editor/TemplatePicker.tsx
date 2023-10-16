@@ -8,7 +8,7 @@ import {
   APP_TEMPLATE_2,
   APP_TEMPLATE_F,
 } from "../sandpack/code-templates";
-import { useTheme } from "@salt-ds/core";
+import { Button, FlexLayout, useTheme } from "@salt-ds/core";
 
 const ThemeTemplate = [
   {
@@ -48,7 +48,11 @@ export const TemplatePicker = ({
   const { mode } = useTheme();
 
   return (
-    <Toolbar className="template-picker-toolbar">
+    <FlexLayout
+      className="template-picker-toolbar"
+      align="center"
+      justify="space-between"
+    >
       <Dropdown
         aria-label="Pick theme template"
         selected={null}
@@ -61,21 +65,33 @@ export const TemplatePicker = ({
         width={160}
       />
 
-      <ToolbarButton onClick={() => onToggleAppThemeMode()} data-align-end>
-        {/* TODO: Salt Toolbar button doesn't reflect children change */}
-        {mode === "dark" ? (
-          <>
-            <DarkIcon aria-label="Dark mode" /> Dark mode
-          </>
-        ) : (
-          <>
-            <LightIcon aria-label="Light mode" /> Light mode
-          </>
-        )}
-      </ToolbarButton>
-      <ToolbarButton onClick={() => shareTheme(themeObj)} data-align-end>
-        <ShareIcon /> Theme
-      </ToolbarButton>
-    </Toolbar>
+      <FlexLayout gap={1}>
+        <Button
+          variant="secondary"
+          onClick={() => onToggleAppThemeMode()}
+          data-align-end
+          aria-label="Toggle theme mode"
+        >
+          {/* TODO: Salt Toolbar button doesn't reflect children change */}
+          {mode === "dark" ? (
+            <>
+              <DarkIcon aria-label="Dark mode" />
+            </>
+          ) : (
+            <>
+              <LightIcon aria-label="Light mode" />
+            </>
+          )}
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => shareTheme(themeObj)}
+          data-align-end
+          aria-label="Share theme"
+        >
+          <ShareIcon />
+        </Button>
+      </FlexLayout>
+    </FlexLayout>
   );
 };

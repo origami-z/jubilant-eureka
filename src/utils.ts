@@ -34,6 +34,8 @@ const flashInfo = (message: string, timeout = 1000) => {
 const PARAM_THEME_PREFIX = "#theme/";
 
 export const shareTheme = (theme: object) => {
+  console.log("shareTheme:", theme);
+
   const compressed = compressObject(theme);
   const newURL = PARAM_THEME_PREFIX + compressed;
 
