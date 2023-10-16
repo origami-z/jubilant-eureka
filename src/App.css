@@ -1,0 +1,45 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+strong {
+  color: var(--salt-text-primary-foreground);
+}
+
+.theme-definition-panel.saltFlexItem {
+  flex-basis: 33%;
+}
+
+.sandpack-preview-panel.saltFlexItem {
+  flex-basis: 66%;
+}
+
+.theme-renderer-card.saltCard {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  position: relative;
+  min-height: 100px;
+}
+
+.theme-renderer-card.saltCard h1 {
+  margin: 0;
+}
+
+.theme-renderer-card.saltCard {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  position: relative;
+}
+.code-editor-card.saltCard .saltCard-content {
+  padding: 0;
+  height: 100%;
+}
+
+.template-picker-toolbar {
+  flex: 0 0 auto;
+}
+
+.saltButton.saltButton-secondary.saltColorChooser-overlayButton {
+  --saltButton-textTransform: none;
+}

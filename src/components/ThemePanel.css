@@ -1,0 +1,8 @@
+.theme-panel.saltPanel {
+  height: 100vh;
+  /* TODO: responsiveness for smaller viewport */
+  width: 50vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

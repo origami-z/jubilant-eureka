@@ -1,0 +1,10 @@
+.theme-editor {
+  position: relative;
+}
+
+.show-code-editor-toggle.saltToggleButton {
+  position: absolute;
+  top: calc(var(--salt-spacing-400) + var(--salt-size-base));
+  right: var(--salt-spacing-300);
+  z-index: 1;
+}
