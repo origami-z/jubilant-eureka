@@ -61,20 +61,6 @@ export const TemplatePicker = ({
         width={160}
       />
 
-      <Dropdown
-        aria-label="Pick preview template"
-        selected={null}
-        source={AppCodeTemplate}
-        itemToString={(item) => (item ? item.name : "")}
-        onSelectionChange={(_, item) => {
-          if (item) {
-            Object.entries(item.template).forEach(([file, code]) => {
-              // sandpack.updateFile(file, code, true);
-            });
-          }
-        }}
-        triggerComponent={<DropdownButton label={"Preview template"} />}
-      />
       <ToolbarButton onClick={() => onToggleAppThemeMode()} data-align-end>
         {/* TODO: Salt Toolbar button doesn't reflect children change */}
         {mode === "dark" ? (

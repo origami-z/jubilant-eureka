@@ -106,7 +106,7 @@ export const ThemeRenderer = ({
   onThemeObjChange?: (newThemeObj: any) => void;
 }) => {
   return (
-    <>
+    <StackLayout style={{ flexGrow: 1, flexShrink: 1, overflow: "auto" }}>
       <H1>{name}</H1>
       <div>
         <ThemeTokens
@@ -115,6 +115,6 @@ export const ThemeRenderer = ({
           level={2}
         />
       </div>
-    </>
+    </StackLayout>
   );
 };

@@ -4,7 +4,12 @@
 
 .show-code-editor-toggle.saltToggleButton {
   position: absolute;
-  top: calc(var(--salt-spacing-400) + var(--salt-size-base));
-  right: var(--salt-spacing-300);
+  top: calc(var(--salt-spacing-400) * 2 + var(--salt-size-base));
+  right: var(--salt-spacing-400);
   z-index: 1;
+}
+
+.theme-renderer-card-inner {
+  height: 100%;
+  overflow: auto;
 }

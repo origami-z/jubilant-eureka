@@ -1,22 +1,67 @@
 import { FlexItem, FlexLayout, Panel } from "@salt-ds/core";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ThemeEditor } from "./ThemeEditor";
 
 import "./ThemePanel.css";
+import { DEFAULT_REACT_TYPESCRIPT_CRA_FILES, getCodeForCSS } from "./sandpack";
+import { getInitialPreviewMode, getInitialTheme } from "../utils";
+import { DEFAULT_TOKENS } from "../themes/sample-tokens/default";
+
+const THEME_PANEL_CUSTOM_CLASS = "theme-panel-custom-theme";
+
+// Gets theme from URL if any
+const initialTheme = getInitialTheme(DEFAULT_TOKENS);
+const initialPreviewMode = getInitialPreviewMode("light");
+const CUSTOM_SETUP = DEFAULT_REACT_TYPESCRIPT_CRA_FILES(
+  initialTheme,
+  initialPreviewMode as any
+);
 
 export const ThemePanel = ({
-  initialTheme,
   onToggleAppThemeMode,
 }: {
-  initialTheme: any;
   onToggleAppThemeMode: () => void;
 }) => {
   const [customTheme, setCustomTheme] = useState<any>(initialTheme);
 
-  // TODO: set style injected into head, with `getCodeForCSS`
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const styleElement = useRef<HTMLStyleElement | null>(null);
+
+  useEffect(() => {
+    console.log("rootRef", rootRef.current);
+    if (rootRef.current) {
+      const saltThemeElement = rootRef.current.closest(".salt-theme");
+      if (saltThemeElement) {
+        saltThemeElement.classList.add(THEME_PANEL_CUSTOM_CLASS);
+
+        styleElement.current = document.createElement("style");
+        document.head.appendChild(styleElement.current);
+
+        styleElement.current.setAttribute("type", "text/css");
+        // styleElement.current.setAttribute("data-salt-style", testId || "");
+        styleElement.current.textContent = getCodeForCSS(
+          customTheme,
+          THEME_PANEL_CUSTOM_CLASS
+        );
+      } else {
+        console.warn("Can not find element with `.salt-theme`");
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (styleElement.current) {
+      styleElement.current.textContent = getCodeForCSS(
+        customTheme,
+        THEME_PANEL_CUSTOM_CLASS
+      );
+    } else {
+      console.warn("No styleElement found, skip updating CSS styles");
+    }
+  }, [customTheme]);
 
   return (
-    <Panel className="theme-panel">
+    <Panel className="theme-panel" ref={rootRef}>
       <ThemeEditor
         themeObj={customTheme}
         onThemeObjChange={(newTheme) => setCustomTheme(newTheme)}

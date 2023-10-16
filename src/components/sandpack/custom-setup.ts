@@ -5,7 +5,10 @@ import { APP_CSS, APP_FILE, SALT_DEPENDENCIES, THEME_CSS } from "./constants";
 
 const DEFAULT_APP_TEMPLATE = APP_TEMPLATE_F;
 
-export const getCodeForCSS = (theme: any) => `.custom-theme.salt-theme {
+export const getCodeForCSS = (
+  theme: any,
+  themeName = "custom-theme"
+) => `.${themeName}.salt-theme {
   ${convertThemeObjToCss(theme).join("\n  ")}
 }`;
 
