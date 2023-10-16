@@ -78,6 +78,22 @@ export const SampleToken1 = {
             },
           },
         },
+        foreground: {
+          active: {
+            $type: "color",
+            $value: "{brand.red.10}",
+          },
+        },
+        border: {
+          active: {
+            $type: "color",
+            $value: "{brand.red.20}",
+          },
+        },
+        outline: {
+          $type: "color",
+          $value: "{brand.red.20}",
+        },
       },
       neutral: {
         secondary: {

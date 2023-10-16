@@ -72,15 +72,10 @@ export const TemplatePicker = ({
           data-align-end
           aria-label="Toggle theme mode"
         >
-          {/* TODO: Salt Toolbar button doesn't reflect children change */}
           {mode === "dark" ? (
-            <>
-              <DarkIcon aria-label="Dark mode" />
-            </>
+            <DarkIcon aria-label="Dark mode" />
           ) : (
-            <>
-              <LightIcon aria-label="Light mode" />
-            </>
+            <LightIcon aria-label="Light mode" />
           )}
         </Button>
         <Button
