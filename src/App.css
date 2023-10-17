@@ -9,8 +9,9 @@ strong {
 
 .theme-mode-toggle.saltButton {
   position: absolute;
-  right: 4px;
-  top: 4px;
+  right: 2px;
+  top: 2px;
+  z-index: 999;
 }
 
 .theme-definition-panel.saltFlexItem {

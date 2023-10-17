@@ -1,8 +1,8 @@
-import { Button, SaltProvider } from "@salt-ds/core";
-import { DarkIcon, LightIcon } from "@salt-ds/icons";
+import { SaltProvider } from "@salt-ds/core";
 import { useState } from "react";
 import { KitchenSink } from "./components/KitchenSink";
 import { ThemePanel } from "./components/ThemePanel";
+import { ThemeSwitcherButton } from "./components/ThemeSwitcherButton";
 
 import "./App.css";
 
@@ -11,20 +11,10 @@ const App = () => {
   return (
     <SaltProvider mode={appThemeMode} applyClassesTo="root">
       <KitchenSink />
-      <Button
-        variant="secondary"
-        onClick={() =>
-          setAppThemeMode((prev) => (prev === "light" ? "dark" : "light"))
-        }
-        aria-label="Toggle theme mode"
-        className="theme-mode-toggle"
-      >
-        {appThemeMode === "dark" ? (
-          <DarkIcon aria-label="Dark mode" />
-        ) : (
-          <LightIcon aria-label="Light mode" />
-        )}
-      </Button>
+      <ThemeSwitcherButton
+        appThemeMode={appThemeMode}
+        setAppThemeMode={setAppThemeMode}
+      />
       <ThemePanel />
     </SaltProvider>
   );
