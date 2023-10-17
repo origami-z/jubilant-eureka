@@ -39,11 +39,9 @@ const AppCodeTemplate = [
 export const TemplatePicker = ({
   themeObj,
   onThemeObjChange,
-  onToggleAppThemeMode,
 }: {
   themeObj: any;
   onThemeObjChange?: (newThemeObj: any, name: string) => void;
-  onToggleAppThemeMode: () => void;
 }) => {
   const { mode } = useTheme();
 
@@ -66,18 +64,6 @@ export const TemplatePicker = ({
       />
 
       <FlexLayout gap={1}>
-        <Button
-          variant="secondary"
-          onClick={() => onToggleAppThemeMode()}
-          data-align-end
-          aria-label="Toggle theme mode"
-        >
-          {mode === "dark" ? (
-            <DarkIcon aria-label="Dark mode" />
-          ) : (
-            <LightIcon aria-label="Light mode" />
-          )}
-        </Button>
         <Button
           variant="secondary"
           onClick={() => shareTheme(themeObj)}

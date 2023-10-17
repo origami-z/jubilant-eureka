@@ -7,6 +7,12 @@ strong {
   color: var(--salt-text-primary-foreground);
 }
 
+.theme-mode-toggle.saltButton {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
 .theme-definition-panel.saltFlexItem {
   flex-basis: 33%;
 }

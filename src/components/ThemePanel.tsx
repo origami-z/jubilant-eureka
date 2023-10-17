@@ -17,11 +17,7 @@ const CUSTOM_SETUP = DEFAULT_REACT_TYPESCRIPT_CRA_FILES(
   initialPreviewMode as any
 );
 
-export const ThemePanel = ({
-  onToggleAppThemeMode,
-}: {
-  onToggleAppThemeMode: () => void;
-}) => {
+export const ThemePanel = () => {
   const [customTheme, setCustomTheme] = useState<any>(initialTheme);
 
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -69,7 +65,6 @@ export const ThemePanel = ({
       <ThemeEditor
         themeObj={customTheme}
         onThemeObjChange={(newTheme) => setCustomTheme(newTheme)}
-        onToggleAppThemeMode={onToggleAppThemeMode}
       />
     </Panel>
   );
