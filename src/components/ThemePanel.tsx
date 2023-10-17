@@ -1,4 +1,4 @@
-import { FlexItem, FlexLayout, Panel } from "@salt-ds/core";
+import { Button, FlexItem, FlexLayout, Panel } from "@salt-ds/core";
 import { useEffect, useRef, useState } from "react";
 import { ThemeEditor } from "./ThemeEditor";
 
@@ -6,6 +6,13 @@ import "./ThemePanel.css";
 import { DEFAULT_REACT_TYPESCRIPT_CRA_FILES, getCodeForCSS } from "./sandpack";
 import { getInitialPreviewMode, getInitialTheme } from "../utils";
 import { DEFAULT_TOKENS } from "../themes/sample-tokens/default";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@salt-ds/icons";
+import { ArrowLeft } from "@salt-ds/lab/dist-types/common-hooks";
 
 const THEME_PANEL_CUSTOM_CLASS = "theme-panel-custom-theme";
 
@@ -22,6 +29,8 @@ export const ThemePanel = () => {
 
   const rootRef = useRef<HTMLDivElement | null>(null);
   const styleElement = useRef<HTMLStyleElement | null>(null);
+
+  const [showPanel, setShowPanel] = useState(true);
 
   useEffect(() => {
     console.log("rootRef", rootRef.current);
@@ -62,10 +71,19 @@ export const ThemePanel = () => {
 
   return (
     <Panel className="theme-panel" ref={rootRef}>
-      <ThemeEditor
-        themeObj={customTheme}
-        onThemeObjChange={(newTheme) => setCustomTheme(newTheme)}
-      />
+      {showPanel ? (
+        <ThemeEditor
+          themeObj={customTheme}
+          onThemeObjChange={(newTheme) => setCustomTheme(newTheme)}
+        />
+      ) : null}
+      <Button
+        className="show-hide-button"
+        variant="secondary"
+        onClick={() => setShowPanel((s) => !s)}
+      >
+        {showPanel ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+      </Button>
     </Panel>
   );
 };

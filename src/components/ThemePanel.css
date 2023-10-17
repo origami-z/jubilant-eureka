@@ -1,8 +1,13 @@
 .theme-panel.saltPanel {
   height: 100vh;
-  /* TODO: responsiveness for smaller viewport */
-  width: 50vw;
   position: absolute;
   top: 0;
   right: 0;
+  width: fit-content;
+}
+
+.show-hide-button.saltButton {
+  position: absolute;
+  left: 0;
+  top: 50%;
 }

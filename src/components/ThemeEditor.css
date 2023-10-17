@@ -1,5 +1,8 @@
 .theme-editor {
   position: relative;
+
+  /* TODO: responsiveness for smaller viewport */
+  width: 50vw;
 }
 
 .show-code-editor-toggle.saltToggleButton {
