@@ -1,4 +1,10 @@
-import { ShareIcon, LightIcon, DarkIcon } from "@salt-ds/icons";
+import {
+  ShareIcon,
+  LightIcon,
+  DarkIcon,
+  TagIcon,
+  TagClearIcon,
+} from "@salt-ds/icons";
 import { Dropdown, DropdownButton, Toolbar, ToolbarButton } from "@salt-ds/lab";
 import { DEFAULT_TOKENS } from "../../themes/sample-tokens/default";
 import { SampleToken1 } from "../../themes/sample-tokens/sample1";
@@ -8,7 +14,13 @@ import {
   APP_TEMPLATE_2,
   APP_TEMPLATE_F,
 } from "../sandpack/code-templates";
-import { Button, FlexLayout, useTheme } from "@salt-ds/core";
+import {
+  Button,
+  FlexLayout,
+  ToggleButton,
+  Tooltip,
+  useTheme,
+} from "@salt-ds/core";
 
 const ThemeTemplate = [
   {
@@ -39,9 +51,13 @@ const AppCodeTemplate = [
 export const TemplatePicker = ({
   themeObj,
   onThemeObjChange,
+  applyTheme,
+  onApplyThemeChange,
 }: {
   themeObj: any;
   onThemeObjChange?: (newThemeObj: any, name: string) => void;
+  applyTheme: boolean;
+  onApplyThemeChange: (newValue: boolean) => void;
 }) => {
   const { mode } = useTheme();
 
@@ -64,6 +80,17 @@ export const TemplatePicker = ({
       />
 
       <FlexLayout gap={1}>
+        <Tooltip
+          content={applyTheme ? "Disable custom theme" : "Enable custom theme"}
+        >
+          <ToggleButton
+            value="apply theme"
+            selected={!applyTheme}
+            onChange={() => onApplyThemeChange(!applyTheme)}
+          >
+            {applyTheme ? <TagIcon /> : <TagClearIcon />}
+          </ToggleButton>
+        </Tooltip>
         <Button
           variant="secondary"
           onClick={() => shareTheme(themeObj)}

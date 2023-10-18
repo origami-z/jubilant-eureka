@@ -10,9 +10,13 @@ import "./ThemeEditor.css";
 export const ThemeEditor = ({
   themeObj,
   onThemeObjChange,
+  applyTheme,
+  onApplyThemeChange,
 }: {
   themeObj: any;
   onThemeObjChange: (newThemeObj: any) => void;
+  applyTheme: boolean;
+  onApplyThemeChange: (newValue: boolean) => void;
 }) => {
   const [themeName, setThemeName] = useState("Custom theme");
   const [showCodeEditor, setShowCodeEditor] = useState(false);
@@ -30,6 +34,8 @@ export const ThemeEditor = ({
               setThemeName(newName);
             }}
             themeObj={themeObj}
+            applyTheme={applyTheme}
+            onApplyThemeChange={onApplyThemeChange}
           />
           <Tooltip content="Use code editor to change value type or modify">
             <ToggleButton

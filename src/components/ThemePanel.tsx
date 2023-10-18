@@ -32,6 +32,8 @@ export const ThemePanel = () => {
 
   const [showPanel, setShowPanel] = useState(false);
 
+  const [applyCustomTheme, setApplyCustomTheme] = useState(true);
+
   useEffect(() => {
     console.log("rootRef", rootRef.current);
     if (rootRef.current) {
@@ -52,22 +54,20 @@ export const ThemePanel = () => {
         console.warn("Can not find element with `.salt-theme`");
       }
     }
+    return () => {
+      styleElement.current?.remove();
+    };
   }, []);
 
   useEffect(() => {
     if (styleElement.current) {
-      styleElement.current.textContent = getCodeForCSS(
-        customTheme,
-        THEME_PANEL_CUSTOM_CLASS
-      );
+      styleElement.current.textContent = applyCustomTheme
+        ? getCodeForCSS(customTheme, THEME_PANEL_CUSTOM_CLASS)
+        : "";
     } else {
       console.warn("No styleElement found, skip updating CSS styles");
     }
-  }, [customTheme]);
-
-  useEffect(() => {
-    console.log({ customTheme });
-  }, [customTheme]);
+  }, [customTheme, applyCustomTheme]);
 
   return (
     <Panel className="theme-panel" ref={rootRef}>
@@ -75,12 +75,15 @@ export const ThemePanel = () => {
         <ThemeEditor
           themeObj={customTheme}
           onThemeObjChange={(newTheme) => setCustomTheme(newTheme)}
+          applyTheme={applyCustomTheme}
+          onApplyThemeChange={(newValue) => setApplyCustomTheme(newValue)}
         />
       ) : null}
       <Button
         className="show-hide-button"
         variant="secondary"
         onClick={() => setShowPanel((s) => !s)}
+        aria-label={showPanel ? "Hide panel" : "Show panel"}
       >
         {showPanel ? <ChevronRightIcon /> : <ChevronLeftIcon />}
       </Button>
