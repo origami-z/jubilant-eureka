@@ -91,14 +91,16 @@ export const TemplatePicker = ({
             {applyTheme ? <TagIcon /> : <TagClearIcon />}
           </ToggleButton>
         </Tooltip>
-        <Button
-          variant="secondary"
-          onClick={() => shareTheme(themeObj)}
-          data-align-end
-          aria-label="Share theme"
-        >
-          <ShareIcon />
-        </Button>
+        <Tooltip content={"Share theme"}>
+          <Button
+            variant="secondary"
+            onClick={() => shareTheme(themeObj)}
+            data-align-end
+            aria-label="Share theme"
+          >
+            <ShareIcon />
+          </Button>
+        </Tooltip>
       </FlexLayout>
     </FlexLayout>
   );
