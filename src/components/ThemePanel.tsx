@@ -30,7 +30,7 @@ export const ThemePanel = () => {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const styleElement = useRef<HTMLStyleElement | null>(null);
 
-  const [showPanel, setShowPanel] = useState(false);
+  const [showPanel, setShowPanel] = useState(true);
 
   const [applyCustomTheme, setApplyCustomTheme] = useState(true);
 
